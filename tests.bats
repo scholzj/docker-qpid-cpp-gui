@@ -32,7 +32,7 @@ httpPort() {
     cont=$(sudo docker run -P -e QMF_GUI_ADMIN_USERNAME=$USERNAME -e QMF_GUI_ADMIN_PASSWORD=$PASSWORD -d $IMAGE:$VERSION)
     port=$(httpPort)
  
-    sleep 10 # give the image time to start
+    sleep 20 # give the image time to start
 
     run curl -s http://$USERNAME:$PASSWORD@$HOSTNAME:$port/qpid/connection/
     echo $output
@@ -46,7 +46,7 @@ httpPort() {
     cont=$(sudo docker run -P -e QMF_GUI_ADMIN_USERNAME=$USERNAME -e QMF_GUI_ADMIN_PASSWORD=$PASSWORD -d $IMAGE:$VERSION -a $HOSTNAME:$port_qpidd)
     port=$(httpPort)
  
-    sleep 10 # give the image time to start
+    sleep 20 # give the image time to start
 
     run curl -s http://$USERNAME:$PASSWORD@$HOSTNAME:$port/qpid/connection/default
     echo $output
@@ -60,7 +60,7 @@ httpPort() {
     cont=$(sudo docker run -P -e QMF_GUI_ADMIN_USERNAME=$USERNAME -e QMF_GUI_ADMIN_PASSWORD=$PASSWORD -d $IMAGE:$VERSION -a $HOSTNAME:$port_qpidd)
     port=$(httpPort)
  
-    sleep 10 # give the image time to start
+    sleep 20 # give the image time to start
 
     run curl -s http://$USERNAME:wrongpassword@$HOSTNAME:$port/qpid/connection/default
     echo $output
