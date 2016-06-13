@@ -46,13 +46,9 @@ httpPort() {
 @test "Broker link, correct credentials" {
     cont_qpidd=$(sudo docker run -P -d $QPIDD_IMAGE:$QPIDD_VERSION)
     port_qpidd=$(tcpPort)
-    cont=$(sudo docker run -P -e QMF_GUI_ADMIN_USERNAME=$USERNAME -e QMF_GUI_ADMIN_PASSWORD=$PASSWORD -d $IMAGE:$VERSION -a $HOSTNAME:$port_qpidd)
+    cont=$(sudo docker run -P -e QMF_GUI_ADMIN_USERNAME=$USERNAME -e QMF_GUI_ADMIN_PASSWORD=$PASSWORD -d $IMAGE:$VERSION -a ${HOSTNAME}:${port_qpidd})
     port=$(httpPort)
 
-    sleep 10
- 
-    curl -s http://$USERNAME:$PASSWORD@$HOSTNAME:$port/qpid/connection/default
-    
     sleep 5 # give the image time to start
 
     run curl -s http://$USERNAME:$PASSWORD@$HOSTNAME:$port/qpid/connection/default
@@ -64,13 +60,9 @@ httpPort() {
 @test "Broker link, incorrect credentials" {
     cont_qpidd=$(sudo docker run -P -d $QPIDD_IMAGE:$QPIDD_VERSION)
     port_qpidd=$(tcpPort)
-    cont=$(sudo docker run -P -e QMF_GUI_ADMIN_USERNAME=$USERNAME -e QMF_GUI_ADMIN_PASSWORD=$PASSWORD -d $IMAGE:$VERSION -a $HOSTNAME:$port_qpidd)
+    cont=$(sudo docker run -P -e QMF_GUI_ADMIN_USERNAME=$USERNAME -e QMF_GUI_ADMIN_PASSWORD=$PASSWORD -d $IMAGE:$VERSION -a ${HOSTNAME}:${port_qpidd})
     port=$(httpPort)
 
-    sleep 5
-
-    curl -s http://$USERNAME:$PASSWORD@$HOSTNAME:$port/qpid/connection/default
- 
     sleep 5 # give the image time to start
 
     run curl -s http://$USERNAME:wrongpassword@$HOSTNAME:$port/qpid/connection/default
