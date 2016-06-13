@@ -53,6 +53,8 @@ httpPort() {
     sleep 5 # give the image time to start
 
     run curl -s http://$USERNAME:$PASSWORD@$HOSTNAME:$port/qpid/connection/default
+    echo $(docker logs $cont)
+    echo $(docker logs $cont_qpidd)
     echo $output
     [ "$status" -eq "0" ]
     [ "$output" = "{\"url\":\"$HOSTNAME:$port_qpidd\",\"connectionOptions\":{}}" ]
