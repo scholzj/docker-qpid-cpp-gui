@@ -5,10 +5,6 @@ sudo: required
 services:
   - docker
 
-addons:
-  hosts:
-    - myhost
-
 before_install:
   - sudo add-apt-repository ppa:duggan/bats --yes
   - sudo apt-get update -q
