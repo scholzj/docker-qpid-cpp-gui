@@ -46,7 +46,7 @@ httpPort() {
     cont=$(sudo docker run -P -e QMF_GUI_ADMIN_USERNAME=$USERNAME -e QMF_GUI_ADMIN_PASSWORD=$PASSWORD -d $IMAGE:$VERSION -a $HOSTNAME:$port_qpidd)
     port=$(httpPort)
 
-    sleep 5
+    sleep 10
  
     curl -s http://$USERNAME:$PASSWORD@$HOSTNAME:$port/qpid/connection/default
     
