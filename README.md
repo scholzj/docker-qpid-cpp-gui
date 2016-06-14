@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/scholzj/docker-qpid-cpp-gui.svg?branch=master)](https://travis-ci.org/scholzj/docker-qpid-cpp-gui)
+
 # docker-qpid-cpp-gui
 
 Docker image for QMF WebGUI / REST interface for the Qpid C++ broker. The image is based on CentOS 7.
